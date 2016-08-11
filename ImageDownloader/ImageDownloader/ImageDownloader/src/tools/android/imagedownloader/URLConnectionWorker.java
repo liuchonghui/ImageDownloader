@@ -1,8 +1,6 @@
-package com.mfashiongallery.express.download;
+package tools.android.imagedownloader;
 
 import android.text.TextUtils;
-
-import com.android.overlay.utils.LogUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,7 +33,6 @@ public class URLConnectionWorker implements ImageDownloadWorker {
 
         while (requsetTimes >= 0 && requsetTimes < 3) {
             long totalSize = getDownloadFileSize(url);
-            LogUtils.d("DOWN", "getDownLoadFileSize " + key + " " + totalSize);
             if (totalSize < 0) {
                 requsetTimes++;
                 ImageDownloadManager.getInstance().notifyDownloadFailure(url);
@@ -48,7 +45,6 @@ public class URLConnectionWorker implements ImageDownloadWorker {
                 return;
             }
             long completeSize = getlocalCacheFileSize(dir, key);
-            LogUtils.d("DOWN", "getlocalCacheFileSize " + key + " " + completeSize);
             ImageDownloadManager.getInstance().notifyDownloadStart(url);
             try {
                 URL downloadUrl = new URL(url);

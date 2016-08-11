@@ -1,11 +1,11 @@
-package com.mfashiongallery.express.download;
+package tools.android.imagedownloader;
 
 import android.content.Context;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.mfashiongallery.emag.preview.PreviewUtils;
-
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -49,7 +49,7 @@ public class ImageDownloadManager {
     }
 
     public String getDownloadCacheDir(Context context) {
-        return PreviewUtils.getDownloadCachePath(context);
+        return getDefaultCachePath(context);
     }
 
     public void cancelAll() {
@@ -108,8 +108,7 @@ public class ImageDownloadManager {
         }
         ImageLoadListener l = listener;
         if (l == null) {
-            l = new ImageLoadAdapter() {
-            };
+            l = new ImageLoadAdapter() {};
         }
         Collection<ImageLoadListener> ls = pair.get(url);
         if (ls == null) {
@@ -223,5 +222,16 @@ public class ImageDownloadManager {
                 }
             });
         }
+    }
+
+    private String getDefaultCachePath(Context context) {
+        String path = null;
+        File dir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        if (dir == null) {
+            path = context.getFilesDir() + "/download_cache";
+        } else {
+            path = dir.getAbsolutePath();
+        }
+        return path;
     }
 }

@@ -1,6 +1,4 @@
-package com.mfashiongallery.express.download;
-
-import com.android.overlay.utils.LogUtils;
+package tools.android.imagedownloader;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,7 +34,6 @@ public class URLConnectionMultiableWorker implements ImageDownloadWorker {
         RandomAccessFile randomAccessFile = null;
         while (requsetTimes >= 0 && requsetTimes < 3) {
             totalSize = getDownloadFileSize(url);
-            LogUtils.d("DOWN", "getDownLoadFileSize " + key + " " + totalSize);
             if (totalSize < 0) {
                 requsetTimes++;
                 ImageDownloadManager.getInstance().notifyDownloadFailure(url);
@@ -93,7 +90,6 @@ public class URLConnectionMultiableWorker implements ImageDownloadWorker {
         int progress = (int) (((double) (completeSize) / totalSize) * 100);
         if (progress - originProgress >= 1) {
             originProgress = progress;
-            LogUtils.d("DOWN", "notifyDownloadProgress " + key + " " + progress);
             ImageDownloadManager.getInstance().notifyDownloadProgress(url, progress);
         }
     }
@@ -102,9 +98,7 @@ public class URLConnectionMultiableWorker implements ImageDownloadWorker {
 
     protected void notifyDownloadBlockComplete(long startPos, long endPos) {
         allBlock = allBlock + (endPos - startPos + 1);
-        LogUtils.d("DOWN", "Block " + startPos + "-" + endPos + " Complete");
         if (allBlock >= totalSize) {
-            LogUtils.d("DOWN", "notifyDownloadBlockComplete " + key + " " + totalSize);
             ImageDownloadManager.getInstance().notifyDownloadSuccess(url,
                     new File(dir, key).getAbsolutePath());
         }
