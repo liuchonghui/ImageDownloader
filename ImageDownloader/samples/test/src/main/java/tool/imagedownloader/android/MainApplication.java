@@ -1,4 +1,4 @@
-package tool.imageloadercompact.android;
+package tool.imagedownloader.android;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;

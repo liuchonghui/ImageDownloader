@@ -197,7 +197,7 @@ public class ImageDownloadManager {
 
     public void notifyDownloadSuccess(final String url, final String path) {
         writeCache(url, path);
-        final Collection<ImageLoadListener> ls = pair.remove(url);
+        final Collection<ImageLoadListener> ls = pair.get(url);
         if (ls != null) {
             new Handler(Looper.getMainLooper()).post(new Runnable() {
                 @Override
@@ -210,14 +210,14 @@ public class ImageDownloadManager {
         }
     }
 
-    public void notifyDownloadClear(final String url) {
+    public void notifyDownloadClear(final boolean success, final String url, final String path) {
         final Collection<ImageLoadListener> ls = pair.remove(url);
         if (ls != null) {
             new Handler(Looper.getMainLooper()).post(new Runnable() {
                 @Override
                 public void run() {
                     for (ImageLoadListener l : ls) {
-                        l.onImageLoadClear(url);
+                        l.onImageLoadClear(success, url, path);
                     }
                 }
             });

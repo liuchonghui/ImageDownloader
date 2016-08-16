@@ -27,6 +27,8 @@ public class URLConnectionWorker implements ImageDownloadWorker {
 
     @Override
     public void run() {
+        boolean success = false;
+        String savePath = null;
         RandomAccessFile randomAccessFile = null;
         InputStream is = null;
         HttpURLConnection conn = null;
@@ -42,6 +44,7 @@ public class URLConnectionWorker implements ImageDownloadWorker {
             //如果有此文件返回
             if (!TextUtils.isEmpty(path)) {
                 ImageDownloadManager.getInstance().notifyDownloadSuccess(url, path);
+                ImageDownloadManager.getInstance().notifyDownloadClear(true, url, path);
                 return;
             }
             long completeSize = getlocalCacheFileSize(dir, key);
@@ -70,6 +73,8 @@ public class URLConnectionWorker implements ImageDownloadWorker {
                     }
                 }
                 requsetTimes = -1;
+                success = true;
+                savePath = target.getAbsolutePath();
                 ImageDownloadManager.getInstance().notifyDownloadSuccess(url, target.getAbsolutePath());
 
             } catch (Exception e) {
@@ -102,6 +107,7 @@ public class URLConnectionWorker implements ImageDownloadWorker {
                 }
             }
         }
+        ImageDownloadManager.getInstance().notifyDownloadClear(success, url, savePath);
     }
 
     @Override

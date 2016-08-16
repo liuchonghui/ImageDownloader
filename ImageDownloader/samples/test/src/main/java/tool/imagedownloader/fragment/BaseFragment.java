@@ -1,4 +1,4 @@
-package tool.imageloadercompact.fragment;
+package tool.imagedownloader.fragment;
 
 import android.app.Activity;
 import android.content.Intent;

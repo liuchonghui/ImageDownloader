@@ -9,5 +9,5 @@ public interface ImageLoadListener {
     void onImageLoadProgress(String url, int progress);
     void onImageLoadSuccess(String url, String path);
     void onImageLoadFailure(String url);
-    void onImageLoadClear(String url);
+    void onImageLoadClear(boolean success, String url, String path);
 }

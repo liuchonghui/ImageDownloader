@@ -1,4 +1,4 @@
-package tool.imageloadercompact.fragment;
+package tool.imagedownloader.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,17 +18,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.math.BigDecimal;
-import java.net.URI;
+import com.android.imageloadercompact.CompactImageView;
+import com.android.imageloadercompact.ImageLoaderCompact;
+import com.android.imageloadercompact.OnDiskCachesClearListener;
+import com.android.imageloadercompact.OnFetchBitmapListener;
+import com.android.imageloadercompact.Size;
 
-import tool.imageloadercompact.CompactImageView;
-import tool.imageloadercompact.ImageLoaderCompact;
-import tool.imageloadercompact.OnDiskCachesClearListener;
-import tool.imageloadercompact.OnFetchBitmapListener;
-import tool.imageloadercompact.Size;
-import tool.imageloadercompact.activity.CustomWaitDialog;
-import tool.imageloadercompact.activity.ImageBrowserActivity;
-import tool.imageloadercompact.test.R;
+import java.math.BigDecimal;
+
+import tool.imagedownloader.activity.CustomWaitDialog;
+import tool.imagedownloader.test.R;
 
 /**
  * @author liu_chonghui
@@ -193,8 +192,6 @@ public class MainFragment extends BaseFragment {
         asyncImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ImageBrowserActivity.class);
-                getActivity().startActivity(intent);
             }
         });
     }

@@ -1,4 +1,4 @@
-package tool.imageloadercompact.activity;
+package tool.imagedownloader.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-import tool.imageloadercompact.ImageLoaderCompact;
+import com.android.imageloadercompact.ImageLoaderCompact;
 
 //import com.sina.fresco.FrescoManager;
 

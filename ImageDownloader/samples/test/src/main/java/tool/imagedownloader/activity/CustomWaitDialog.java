@@ -1,4 +1,4 @@
-package tool.imageloadercompact.activity;
+package tool.imagedownloader.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import tool.imageloadercompact.test.R;
+import tool.imagedownloader.test.R;
 
 /**
  * 自定义加载 请求等等待dialog

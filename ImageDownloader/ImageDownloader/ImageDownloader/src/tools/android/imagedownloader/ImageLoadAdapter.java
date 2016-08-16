@@ -25,6 +25,6 @@ public abstract class ImageLoadAdapter implements ImageLoadListener {
     }
 
     @Override
-    public void onImageLoadClear(String url) {
+    public void onImageLoadClear(boolean success, String url, String path) {
     }
 }

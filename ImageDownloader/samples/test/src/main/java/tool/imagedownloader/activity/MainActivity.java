@@ -1,4 +1,4 @@
-package tool.imageloadercompact.activity;
+package tool.imagedownloader.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 
-import tool.imageloadercompact.test.R;
-import tool.imageloadercompact.fragment.MainFragment;
+import tool.imagedownloader.fragment.MainFragment;
+import tool.imagedownloader.test.R;
 
 public class MainActivity extends BaseFragmentActivity {
     protected MainFragment mFragment;
