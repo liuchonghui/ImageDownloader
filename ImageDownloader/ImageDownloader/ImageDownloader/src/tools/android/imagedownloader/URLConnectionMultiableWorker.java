@@ -42,7 +42,7 @@ public class URLConnectionMultiableWorker implements ImageDownloadWorker {
             requsetTimes = -1;
         }
         if (totalSize < 0) {
-            ImageDownloadManager.getInstance().notifyDownloadClear(url);
+            ImageDownloadManager.getInstance().notifyDownloadClear(false, url, null);
             return;
         }
         ImageDownloadManager.getInstance().notifyDownloadStart(url);
