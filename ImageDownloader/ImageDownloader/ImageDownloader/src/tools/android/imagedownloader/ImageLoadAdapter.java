@@ -21,7 +21,7 @@ public abstract class ImageLoadAdapter implements ImageLoadListener {
     }
 
     @Override
-    public void onImageLoadFailure(String url) {
+    public void onImageLoadFailure(String url, String message) {
     }
 
     @Override

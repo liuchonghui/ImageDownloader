@@ -19,6 +19,9 @@ public class URLConnectionWorker implements ImageDownloadWorker {
     protected int requsetTimes = 0;
     protected int bufferSize = 4096;
 
+    protected final int READ_TIME_OUT = 10 * 60 *1000; // millis
+    protected final int CONNECT_TIME_OUT = 20 *1000; // millis
+
     public URLConnectionWorker(String url, String dir, String key) {
         this.url = url;
         this.dir = dir;
@@ -37,7 +40,12 @@ public class URLConnectionWorker implements ImageDownloadWorker {
             long totalSize = getDownloadFileSize(url);
             if (totalSize < 0) {
                 requsetTimes++;
-                ImageDownloadManager.getInstance().notifyDownloadFailure(url);
+                ImageDownloadManager.getInstance().notifyDownloadFailure(url, "totalSize < 0");
+                try {
+                    Thread.sleep(1000L);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 continue;
             }
             String path = isFileExist(dir, key, totalSize);
@@ -52,8 +60,8 @@ public class URLConnectionWorker implements ImageDownloadWorker {
             try {
                 URL downloadUrl = new URL(url);
                 conn = (HttpURLConnection) downloadUrl.openConnection();
-                conn.setConnectTimeout(2000);
-                conn.setReadTimeout(2000);
+                conn.setConnectTimeout(CONNECT_TIME_OUT);
+                conn.setReadTimeout(READ_TIME_OUT);
                 conn.setRequestProperty("Range", "bytes=" + completeSize + "-" +
                         totalSize);
                 is = conn.getInputStream();
@@ -80,7 +88,7 @@ public class URLConnectionWorker implements ImageDownloadWorker {
             } catch (Exception e) {
                 e.printStackTrace();
                 if (requsetTimes >= 2) {
-                    ImageDownloadManager.getInstance().notifyDownloadFailure(url);
+                    ImageDownloadManager.getInstance().notifyDownloadFailure(url, "requsetTimes >= 2");
                 }
             } finally {
                 requsetTimes++;
@@ -118,7 +126,7 @@ public class URLConnectionWorker implements ImageDownloadWorker {
             URL url = new URL(inputUrl);
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
-            conn.setConnectTimeout(5000);
+            conn.setConnectTimeout(CONNECT_TIME_OUT);
             size = conn.getContentLength();
         } catch (Exception e) {
             e.printStackTrace();

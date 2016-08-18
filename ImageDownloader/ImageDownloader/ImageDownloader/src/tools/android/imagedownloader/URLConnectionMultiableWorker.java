@@ -36,7 +36,7 @@ public class URLConnectionMultiableWorker implements ImageDownloadWorker {
             totalSize = getDownloadFileSize(url);
             if (totalSize < 0) {
                 requsetTimes++;
-                ImageDownloadManager.getInstance().notifyDownloadFailure(url);
+                ImageDownloadManager.getInstance().notifyDownloadFailure(url, "totalSize < 0");
                 continue;
             }
             requsetTimes = -1;

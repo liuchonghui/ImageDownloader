@@ -153,14 +153,14 @@ public class ImageDownloadManager {
         }
     }
 
-    public void notifyDownloadFailure(final String url) {
+    public void notifyDownloadFailure(final String url, final String message) {
         final Collection<ImageLoadListener> ls = pair.get(url);
         if (ls != null) {
             new Handler(Looper.getMainLooper()).post(new Runnable() {
                 @Override
                 public void run() {
                     for (ImageLoadListener l : ls) {
-                        l.onImageLoadFailure(url);
+                        l.onImageLoadFailure(url, message);
                     }
                 }
             });

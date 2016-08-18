@@ -8,6 +8,6 @@ public interface ImageLoadListener {
     void onImageLoadCancel(String url);
     void onImageLoadProgress(String url, int progress);
     void onImageLoadSuccess(String url, String path);
-    void onImageLoadFailure(String url);
+    void onImageLoadFailure(String url, String message);
     void onImageLoadClear(boolean success, String url, String path);
 }
