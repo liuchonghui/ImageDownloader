@@ -9,7 +9,7 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile "tools.android:WindowAttacher:${WINDOW_ATTACHER_VERSION}"
     compile "tools.android:Overlay:${OVERLAY_VERSION}"
-
+    compile 'tools.android:ImageDownloader:1.0.3'
     compile 'tools.android:ImageLoaderCompactWithGlide:1.0.5'
 
 }

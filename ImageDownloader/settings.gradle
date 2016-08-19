@@ -1,2 +1,2 @@
 include ':ImageDownloader:ImageDownloader'
-//include ':samples:test'
+include ':samples:test'

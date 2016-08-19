@@ -49,6 +49,16 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="tool.imagedownloader.activity.FeiDianActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
         <service android:name="com.android.overlay.KeepAliveService" />
 
         <activity
