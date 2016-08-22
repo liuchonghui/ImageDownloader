@@ -30,10 +30,10 @@ import tools.android.imagedownloader.ImageDownloadManager;
 /**
  * @author liu_chonghui
  */
-public class FeiDianFragment extends BaseFragment {
+public class YongLiFragment extends BaseFragment {
 
     protected int getPageLayout() {
-        return R.layout.activity_feidian;
+        return R.layout.activity_yangli;
     }
 
     @Override

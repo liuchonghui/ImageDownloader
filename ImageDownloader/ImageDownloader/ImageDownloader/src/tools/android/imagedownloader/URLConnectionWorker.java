@@ -77,7 +77,7 @@ public class URLConnectionWorker implements ImageDownloadWorker {
                     int progress = (int) (((double) (completeSize) / totalSize) * 100);
                     if (progress - origin_percent >= 1) {
                         origin_percent = progress;
-                        ImageDownloadManager.getInstance().notifyDownloadProgress(url, Math.max(0, Math.min(progress, 100)));
+                        ImageDownloadManager.getInstance().notifyDownloadProgress(url, Math.max(0, Math.min(progress, 99)));
                     }
                 }
                 requsetTimes = -1;

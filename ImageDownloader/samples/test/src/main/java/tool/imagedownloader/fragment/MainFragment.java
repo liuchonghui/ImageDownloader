@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import tool.imagedownloader.activity.FeiDianActivity;
+import tool.imagedownloader.activity.YangLiActivity;
 import tool.imagedownloader.test.R;
 
 /**
@@ -59,6 +60,12 @@ public class MainFragment extends BaseFragment {
 
     @SuppressLint("InflateParams")
     protected void intView(View view) {
+        view.findViewById(R.id.yangli).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), YangLiActivity.class));
+            }
+        });
         view.findViewById(R.id.feidian).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
