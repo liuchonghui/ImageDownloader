@@ -1,6 +1,7 @@
 package tools.android.imagedownloader;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -64,6 +65,13 @@ public class URLConnectionWorker implements ImageDownloadWorker {
                 conn.setReadTimeout(READ_TIME_OUT);
                 conn.setRequestProperty("Range", "bytes=" + completeSize + "-" +
                         totalSize);
+                int responseCode = conn.getResponseCode();
+                if (responseCode == 301 || responseCode == 302) {
+                    String warnning = " Illegal ResponseCode " + responseCode + " is it a hijack?";
+                    Log.d("URLC", url + warnning);
+                    ImageDownloadManager.getInstance().notifyDownloadFailure(url, warnning);
+                    throw new IllegalStateException(url + warnning);
+                }
                 is = conn.getInputStream();
                 File target = new File(dir, key);
                 randomAccessFile = new RandomAccessFile(target.getAbsolutePath(), "rwd");
