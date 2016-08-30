@@ -61,6 +61,7 @@ public class URLConnectionWorker implements ImageDownloadWorker {
             try {
                 URL downloadUrl = new URL(url);
                 conn = (HttpURLConnection) downloadUrl.openConnection();
+                conn.setInstanceFollowRedirects(false);
                 conn.setConnectTimeout(CONNECT_TIME_OUT);
                 conn.setReadTimeout(READ_TIME_OUT);
                 conn.setRequestProperty("Range", "bytes=" + completeSize + "-" +
