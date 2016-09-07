@@ -22,8 +22,15 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"/>
     <Button android:id="@+id/chajian"
-        android:text="插件"
+        android:text="插件(外部)"
         android:layout_below="@+id/feidian"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+    <Button android:id="@+id/chajian2"
+        android:text="插件(内部)"
+        android:layout_below="@+id/chajian"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -81,6 +81,15 @@ public class MainFragment extends BaseFragment {
                 getActivity().startActivity(intent);
             }
         });
+        view.findViewById(R.id.chajian2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.putExtra("royalMessages", "T01020978");
+                intent.setData(Uri.parse("mifg://fashiongallery/express_preview"));
+                getActivity().startActivity(intent);
+            }
+        });
     }
 
     @Override
