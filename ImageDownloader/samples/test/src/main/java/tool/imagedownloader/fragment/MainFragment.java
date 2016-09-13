@@ -77,6 +77,7 @@ public class MainFragment extends BaseFragment {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.putExtra("royalMessages", "T01020978");
+                intent.putExtra("from", "你的App包名"); // 数据统计用
                 intent.setData(Uri.parse("mifg://fashiongallery/push_preview"));
                 getActivity().startActivity(intent);
             }
@@ -85,7 +86,8 @@ public class MainFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.putExtra("royalMessages", "T01020978");
+                intent.putExtra("royalMessages", "T01020978"); // 后台下发的内容ID
+                intent.putExtra("from", "你的App包名"); // 数据统计打点用
                 intent.setData(Uri.parse("mifg://fashiongallery/express_preview"));
                 getActivity().startActivity(intent);
             }
