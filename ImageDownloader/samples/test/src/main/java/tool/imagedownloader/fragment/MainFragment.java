@@ -77,7 +77,7 @@ public class MainFragment extends BaseFragment {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.putExtra("royalMessages", "T01020978");
-                intent.putExtra("from", "你的App包名"); // 数据统计用
+                intent.putExtra("from", getActivity().getPackageName()); // 数据统计用
                 intent.setData(Uri.parse("mifg://fashiongallery/push_preview"));
                 getActivity().startActivity(intent);
             }
@@ -87,8 +87,21 @@ public class MainFragment extends BaseFragment {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.putExtra("royalMessages", "T01020978"); // 后台下发的内容ID
-                intent.putExtra("from", "你的App包名"); // 数据统计打点用
-                intent.setData(Uri.parse("mifg://fashiongallery/express_preview"));
+                intent.putExtra("from", getActivity().getPackageName()); // 数据统计打点用
+                intent.setData(Uri.parse(
+                        "mifg://fashiongallery/express_preview")); // 写死
+                getActivity().startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.chajian3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(
+                        "http://fashiongallery.mi.com/express_preview?"
+                                + "fallback=http://app.mi.com/details?id=com.mfashiongallery.emag"
+                                + "&royalMessages=T01020978"
+                                + "&from=" + getActivity().getPackageName()));
                 getActivity().startActivity(intent);
             }
         });

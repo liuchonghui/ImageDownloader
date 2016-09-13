@@ -29,8 +29,15 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"/>
     <Button android:id="@+id/chajian2"
-        android:text="插件(内部)"
+        android:text="插件(内部mifg方式)"
         android:layout_below="@+id/chajian"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+    <Button android:id="@+id/chajian3"
+        android:text="插件(内部http方式)"
+        android:layout_below="@+id/chajian2"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
