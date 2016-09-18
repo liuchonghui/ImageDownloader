@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.net.URLEncoder;
+
 import tool.imagedownloader.activity.FeiDianActivity;
 import tool.imagedownloader.activity.YangLiActivity;
 import tool.imagedownloader.test.R;
@@ -72,13 +74,22 @@ public class MainFragment extends BaseFragment {
                 startActivity(new Intent(getActivity(), FeiDianActivity.class));
             }
         });
-        view.findViewById(R.id.chajian).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.chajian0).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.putExtra("royalMessages", "T01020978");
                 intent.putExtra("from", getActivity().getPackageName()); // 数据统计用
                 intent.setData(Uri.parse("mifg://fashiongallery/push_preview"));
+                getActivity().startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.chajian1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                String url = "http://video.mi.com/player?id=V001338875";
+                intent.setData(Uri.parse(url));
                 getActivity().startActivity(intent);
             }
         });
@@ -97,11 +108,29 @@ public class MainFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(
-                        "http://fashiongallery.mi.com/express_preview?"
-                                + "fallback=http://app.mi.com/details?id=com.mfashiongallery.emag"
-                                + "&royalMessages=T01020978"
-                                + "&from=" + getActivity().getPackageName()));
+                String fallback = "http://app.mi.com/details?id=com.mfashiongallery.emag";
+                String encodeUrl = URLEncoder.encode(fallback);
+                StringBuilder sb = new StringBuilder();
+                sb.append("http://fashiongallery.mi.com/express_preview?");
+                sb.append("mifb=").append(encodeUrl);
+                sb.append("&from=").append(getActivity().getPackageName());
+                sb.append("&id=").append("T01015354");
+                intent.setData(Uri.parse(sb.toString()));
+                getActivity().startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.testtest).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                String fallback = "http://app.mi.com/details?id=com.mfashiongallery.emag";
+                String encodeUrl = URLEncoder.encode(fallback);
+                StringBuilder sb = new StringBuilder();
+                sb.append("http://fashiongallery.mi.com/express_preview?");
+                sb.append("mifb=").append(encodeUrl);
+                sb.append("&from=").append(getActivity().getPackageName());
+                sb.append("&id=").append("T01015354");
+                intent.setData(Uri.parse(sb.toString()));
                 getActivity().startActivity(intent);
             }
         });
