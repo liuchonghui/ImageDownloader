@@ -6,11 +6,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 
+import tool.imagedownloader.fragment.Main2Fragment;
 import tool.imagedownloader.fragment.MainFragment;
 import tool.imagedownloader.test.R;
 
 public class MainActivity extends BaseFragmentActivity {
-    protected MainFragment mFragment;
+    protected Main2Fragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,7 @@ public class MainActivity extends BaseFragmentActivity {
 
     public void initFragment() {
         if (mFragment == null) {
-            mFragment = new MainFragment();
+            mFragment = new Main2Fragment();
         }
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragTransaction = fm.beginTransaction();
