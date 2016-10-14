@@ -16,7 +16,7 @@
         android:padding="5dp"
         android:background="#7799ff"/>
     <EditText android:id="@+id/text_action"
-        android:hint="例:android.intent.action.VIEW"
+        android:text="android.intent.action.VIEW"
         android:gravity="left|center"
         android:textSize="14sp"
         android:layout_below="@+id/top_action"

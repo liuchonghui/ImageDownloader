@@ -67,46 +67,34 @@ public class Main2Fragment extends BaseFragment {
         return mView;
     }
 
+    EditText action;
+    EditText uri;
+    EditText key1;
+    EditText key2;
+    EditText key3;
+    EditText value1;
+    EditText value2;
+    EditText value3;
+
     @SuppressLint("InflateParams")
     protected void intView(View view) {
-        EditText action = (EditText) view.findViewById(R.id.text_action);
-        EditText uri = (EditText) view.findViewById(R.id.text_uri);
-        EditText key1 = (EditText) view.findViewById(R.id.text_key1);
-        EditText key2 = (EditText) view.findViewById(R.id.text_key2);
-        EditText key3 = (EditText) view.findViewById(R.id.text_key3);
-        EditText value1 = (EditText) view.findViewById(R.id.text_value1);
-        EditText value2 = (EditText) view.findViewById(R.id.text_value2);
-        EditText value3 = (EditText) view.findViewById(R.id.text_value3);
+        action = (EditText) view.findViewById(R.id.text_action);
+        uri = (EditText) view.findViewById(R.id.text_uri);
+        uri.setText("mifg://fashiongallery/player_preview?id=T01022184");
+        key1 = (EditText) view.findViewById(R.id.text_key1);
+        key2 = (EditText) view.findViewById(R.id.text_key2);
+        key3 = (EditText) view.findViewById(R.id.text_key3);
+        value1 = (EditText) view.findViewById(R.id.text_value1);
+        value2 = (EditText) view.findViewById(R.id.text_value2);
+        value3 = (EditText) view.findViewById(R.id.text_value3);
         Button showStrintent = (Button) view.findViewById(R.id.show_strintent);
         final TextView strintent = (TextView) view.findViewById(R.id.strintent);
         Button launch = (Button) view.findViewById(R.id.launch);
 
-        final Intent intent = new Intent();
-        if (action.getText() != null && action.getText().toString() != null) {
-            intent.setAction(action.getText().toString());
-        }
-        if (uri.getText() != null && uri.getText().toString() != null) {
-            String encode = URLEncoder.encode(uri.getText().toString());
-            intent.setData(Uri.parse(encode));
-        }
-        Bundle bundle = new Bundle();
-        if (key1.getText() != null && key1.getText().toString() != null
-                && value1.getText() != null && value1.getText().toString() != null) {
-            bundle.putString(key1.getText().toString(), value1.getText().toString());
-        }
-        if (key2.getText() != null && key2.getText().toString() != null
-                && value2.getText() != null && value2.getText().toString() != null) {
-            bundle.putString(key2.getText().toString(), value2.getText().toString());
-        }
-        if (key3.getText() != null && key3.getText().toString() != null
-                && value3.getText() != null && value3.getText().toString() != null) {
-            bundle.putString(key3.getText().toString(), value3.getText().toString());
-        }
-        intent.putExtras(bundle);
-        final Intent launchIntent = intent;
         showStrintent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent launchIntent = formatIntent();
                 String stringIntent = null;
                 stringIntent = launchIntent.toUri(Intent.URI_INTENT_SCHEME);
                 if (stringIntent != null && stringIntent.length() > 0) {
@@ -119,9 +107,53 @@ public class Main2Fragment extends BaseFragment {
         launch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent launchIntent = formatIntent();
                 startActivity(launchIntent);
             }
         });
+    }
+
+    Intent formatIntent() {
+        Intent intent = new Intent();
+        if (action.getText() != null) {
+            String a = action.getText().toString();
+            if (a != null && a.length() > 0) {
+                intent.setAction(a);
+            }
+        }
+        if (uri.getText() != null) {
+            String u = uri.getText().toString();
+            if (u != null && u.length() > 0) {
+                intent.setData(Uri.parse(u));
+            }
+        }
+        boolean set = false;
+        Bundle bundle = new Bundle();
+        if (key1.getText() != null && value1.getText() != null) {
+            String k = key1.getText().toString();
+            if (k != null && k.length() > 0) {
+                set = true;
+                bundle.putString(key1.getText().toString(), value1.getText().toString());
+            }
+        }
+        if (key2.getText() != null && value2.getText() != null) {
+            String k = key2.getText().toString();
+            if (k != null && k.length() > 0) {
+                set = true;
+                bundle.putString(key2.getText().toString(), value2.getText().toString());
+            }
+        }
+        if (key3.getText() != null && value3.getText() != null) {
+            String k = key3.getText().toString();
+            if (k != null && k.length() > 0) {
+                set = true;
+                bundle.putString(key3.getText().toString(), value3.getText().toString());
+            }
+        }
+        if (set) {
+            intent.putExtras(bundle);
+        }
+        return intent;
     }
 
     @Override
