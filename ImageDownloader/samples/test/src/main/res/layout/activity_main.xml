@@ -1,94 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="tool.whosdomainname.android.MainActivity">
-    <Button android:id="@+id/yangli"
-        android:text="用例"
-        android:gravity="center"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
-    <Button android:id="@+id/feidian"
-        android:text="费电"
-        android:layout_below="@+id/yangli"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
-    <Button android:id="@+id/chajian0"
-        android:text="插件(外部)(mifg方式)"
-        android:layout_below="@+id/feidian"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
-    <Button android:id="@+id/chajian1"
-        android:text="插件(外部)(http方式)"
-        android:layout_below="@+id/chajian0"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
-    <Button android:id="@+id/chajian2"
-        android:text="插件(内部mifg方式)"
-        android:layout_below="@+id/chajian1"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
-    <Button android:id="@+id/chajian3"
-        android:text="插件(内部http方式)"
-        android:layout_below="@+id/chajian2"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
-    <Button android:id="@+id/testtest"
-        android:text="纯测试(功能不定)"
-        android:layout_below="@+id/chajian3"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
-    <Button android:id="@+id/testweb"
-        android:text="内置H5(调起协议)"
-        android:layout_below="@+id/testtest"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
-    <Button android:id="@+id/testweb2"
-        android:text="内置H5(strintent)"
-        android:layout_below="@+id/testweb"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
-    <Button android:id="@+id/testvideo1"
-        android:text="测试video播放（本地）"
-        android:layout_below="@+id/testweb2"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
-    <Button android:id="@+id/testvideo2"
-        android:text="测试video播放（在线不encode）"
-        android:layout_below="@+id/testvideo1"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
-    <Button android:id="@+id/testvideo3"
-        android:text="测试video播放（在线encode）"
-        android:layout_below="@+id/testvideo2"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="tool.whosdomainname.android.MainActivity">
+
+        <Button
+            android:id="@+id/yangli"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="用例" />
+
+        <Button
+            android:id="@+id/feidian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/yangli"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="费电" />
+
+        <Button
+            android:id="@+id/chajian0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/feidian"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="插件(外部)(mifg方式)" />
+
+        <Button
+            android:id="@+id/chajian1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chajian0"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="插件(外部)(http方式)" />
+
+        <Button
+            android:id="@+id/chajian2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chajian1"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="插件(内部mifg方式)" />
+
+        <Button
+            android:id="@+id/chajian3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chajian2"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="插件(内部http方式)" />
+
+        <Button
+            android:id="@+id/testtest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chajian3"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="纯测试(功能不定)" />
+
+        <Button
+            android:id="@+id/testweb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/testtest"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="内置H5(调起协议)" />
+
+        <Button
+            android:id="@+id/testweb2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/testweb"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="内置H5(strintent)" />
+
+        <Button
+            android:id="@+id/testvideo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/testweb2"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="测试video播放（本地）" />
+
+        <Button
+            android:id="@+id/testvideo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/testvideo1"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="测试video播放（在线不encode）" />
+
+        <Button
+            android:id="@+id/testvideo3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/testvideo2"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="测试video播放（在线encode）" />
+
+        <Button
+            android:id="@+id/shangcheng1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/testvideo3"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="测试商城" />
+    </RelativeLayout>
+</ScrollView>

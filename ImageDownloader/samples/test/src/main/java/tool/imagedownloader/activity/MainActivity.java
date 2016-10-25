@@ -11,7 +11,7 @@ import tool.imagedownloader.fragment.MainFragment;
 import tool.imagedownloader.test.R;
 
 public class MainActivity extends BaseFragmentActivity {
-    protected Main2Fragment mFragment;
+    protected MainFragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class MainActivity extends BaseFragmentActivity {
 
     public void initFragment() {
         if (mFragment == null) {
-            mFragment = new Main2Fragment();
+            mFragment = new MainFragment();
         }
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragTransaction = fm.beginTransaction();

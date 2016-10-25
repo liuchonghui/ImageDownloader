@@ -209,6 +209,18 @@ public class MainFragment extends BaseFragment {
                 getActivity().startActivity(intent);
             }
         });
+        view.findViewById(R.id.shangcheng1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setData(Uri.parse("mab://ab.xiaomi.com/d?url=aHR0cDovL20ubWkuY29tLzEvIy9wcm9kdWN0L3ZpZXc_cHJvZHVjdF9pZD00MDI1&cid=20036.00000&client_id=180100041078"));
+                String strintent = intent.toUri(Intent.URI_INTENT_SCHEME);
+                Log.d("MMM", "strintent=" + strintent);
+                getActivity().startActivity(intent);
+            }
+        });
     }
 
     @Override
