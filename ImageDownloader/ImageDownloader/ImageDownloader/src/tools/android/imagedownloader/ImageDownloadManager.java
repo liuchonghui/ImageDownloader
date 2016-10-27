@@ -90,6 +90,17 @@ public class ImageDownloadManager {
         }
     }
 
+    public static String put(String key, String value) {
+        String retValue = null;
+        if (key == null || value == null) {
+            return retValue;
+        }
+        if (cache != null) {
+            retValue = cache.put(key, value);
+        }
+        return retValue;
+    }
+
     public static String get(String key) {
         String value = null;
         if (key == null || key.length() == 0) {
