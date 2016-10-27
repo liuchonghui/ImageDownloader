@@ -63,8 +63,6 @@ public class ImageDownloadManager {
         }
         pair.clear();
 
-        cache.clear();
-
         if (downloadExecutor != null) {
             try {
                 downloadExecutor.shutdown();
@@ -74,7 +72,11 @@ public class ImageDownloadManager {
             }
         }
         downloadExecutor = null;
+    }
 
+    public void clearAll() {
+        cancelAll();
+        cache.clear();
         instance = null;
     }
 
