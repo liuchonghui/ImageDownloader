@@ -128,5 +128,13 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="测试商城" />
+        <Button
+            android:id="@+id/videoview1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shangcheng1"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="测试VideoView" />
     </RelativeLayout>
 </ScrollView>

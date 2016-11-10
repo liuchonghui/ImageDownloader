@@ -2,6 +2,8 @@ package tool.imagedownloader.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,8 +15,10 @@ import android.view.ViewGroup;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
+import java.util.List;
 
 import tool.imagedownloader.activity.FeiDianActivity;
+import tool.imagedownloader.activity.VideoViewActivity;
 import tool.imagedownloader.activity.YangLiActivity;
 import tool.imagedownloader.test.R;
 
@@ -221,6 +225,13 @@ public class MainFragment extends BaseFragment {
                 getActivity().startActivity(intent);
             }
         });
+        view.findViewById(R.id.videoview1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), VideoViewActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -277,4 +288,22 @@ public class MainFragment extends BaseFragment {
                 R.anim.push_right_out);
     }
 
+    public String getLauncherClassName(String packageName) {
+        if (packageName == null) {
+            return null;
+        }
+        PackageManager pm = getActivity().getPackageManager();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        intent.setPackage(packageName);
+        List<ResolveInfo> list = pm.queryIntentActivities(intent, 0);
+        if(list != null) {
+            for(ResolveInfo r : list) {
+                if (packageName.equals(r.activityInfo.applicationInfo.packageName)) {
+                    return r.activityInfo.name;
+                }
+            }
+        }
+        return null;
+    }
 }
