@@ -31,10 +31,19 @@
             android:text="费电" />
 
         <Button
-            android:id="@+id/chajian0"
+            android:id="@+id/luping"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/feidian"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="录屏" />
+
+        <Button
+            android:id="@+id/chajian0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/luping"
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="插件(外部)(mifg方式)" />

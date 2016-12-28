@@ -19,6 +19,7 @@ import java.net.URLEncoder;
 import java.util.List;
 
 import tool.imagedownloader.activity.FeiDianActivity;
+import tool.imagedownloader.activity.LuPingActivity;
 import tool.imagedownloader.activity.VideoViewActivity;
 import tool.imagedownloader.activity.YangLiActivity;
 import tool.imagedownloader.test.R;
@@ -80,6 +81,12 @@ public class MainFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), FeiDianActivity.class));
+            }
+        });
+        view.findViewById(R.id.luping).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), LuPingActivity.class));
             }
         });
         view.findViewById(R.id.chajian0).setOnClickListener(new View.OnClickListener() {
