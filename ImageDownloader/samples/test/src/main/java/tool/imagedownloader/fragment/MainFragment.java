@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Browser;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -229,6 +230,24 @@ public class MainFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), VideoViewActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.yidianzixun1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder sb = new StringBuilder();
+                sb.append("http://mb.yidianzixun.com/article/");
+                sb.append("0EjO3Jtt").append("?");
+                sb.append("s=mb&ref=browser_news");
+                Uri uri = Uri.parse(sb.toString());
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.setClassName("com.android.browser",
+                        "com.android.browser.BrowserActivity");
+                intent.putExtra(Browser.EXTRA_APPLICATION_ID,
+                        "com.mfasiongallery.emag");
+                intent.putExtra("enter_news_comment_mode",true);
+                Log.d("DIAOQI", "strintent=" + intent.toUri(Intent.URI_INTENT_SCHEME));
                 getActivity().startActivity(intent);
             }
         });

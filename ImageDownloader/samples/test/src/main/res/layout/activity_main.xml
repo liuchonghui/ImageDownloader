@@ -136,5 +136,13 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="测试VideoView" />
+        <Button
+            android:id="@+id/yidianzixun1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shangcheng1"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="测试一点资讯展示" />
     </RelativeLayout>
 </ScrollView>
