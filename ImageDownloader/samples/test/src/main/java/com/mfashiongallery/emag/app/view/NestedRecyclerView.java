@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewConfiguration;
 
 /**
@@ -39,6 +40,11 @@ public class NestedRecyclerView extends RecyclerView implements NestedScrollingC
         super(context, attrs, defStyle);
         init(context);
     }
+
+    boolean onScrolledUp;
+    boolean onScrolledDown;
+    boolean onScrolledToTop;
+    boolean onScrolledToBottom;
 
     public void init(Context context) {
         final ViewConfiguration configuration = ViewConfiguration.get(context);
@@ -155,15 +161,15 @@ public class NestedRecyclerView extends RecyclerView implements NestedScrollingC
     @Override
     public void scrollTo(int x, int y) {
 
-        int sy = getScrollY();
-        int mh = getMeasuredHeight();
-        int MaxY = getMeasuredHeight() - showHeight;
-        if (y > MaxY) {
-            y = MaxY;
-        }
-        if (y < 0) {
-            y = 0;
-        }
+//        int sy = getScrollY();
+//        int mh = getMeasuredHeight();
+//        int MaxY = getMeasuredHeight() - showHeight;
+//        if (y > MaxY) {
+//            y = MaxY;
+//        }
+//        if (y < 0) {
+//            y = 0;
+//        }
         super.scrollTo(x, y);
     }
 
