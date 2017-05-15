@@ -153,5 +153,13 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="测试一点资讯展示" />
+        <Button
+            android:id="@+id/fenbianlv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/yidianzixun1"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="测试分辨率" />
     </RelativeLayout>
 </ScrollView>

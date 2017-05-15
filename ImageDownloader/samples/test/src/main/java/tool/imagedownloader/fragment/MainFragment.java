@@ -1,17 +1,21 @@
 package tool.imagedownloader.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Browser;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -116,8 +120,11 @@ public class MainFragment extends BaseFragment {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.putExtra("royalMessages", "T01020978"); // 后台下发的内容ID
                 intent.putExtra("from", getActivity().getPackageName()); // 数据统计打点用
-                intent.setData(Uri.parse(
-                        "mifg://fashiongallery/express_preview")); // 写死
+                StringBuilder sb = new StringBuilder();
+                sb.append("mifg://fashiongallery/express_preview?");
+                sb.append("&from=").append(getActivity().getPackageName());
+                sb.append("&id=").append("T01022184");
+                intent.setData(Uri.parse(sb.toString()));
                 Log.d("DIAOQI", "strintent=" + intent.toUri(Intent.URI_INTENT_SCHEME));
                 getActivity().startActivity(intent);
             }
@@ -126,13 +133,13 @@ public class MainFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                String fallback = "http://app.mi.com/details?id=com.mfashiongallery.emag";
+                String fallback = "http://app.xiaomi.com/details?id=com.mfashiongallery.emag";
                 String encodeUrl = URLEncoder.encode(fallback);
                 StringBuilder sb = new StringBuilder();
                 sb.append("http://fashiongallery.mi.com/express_preview?");
-                sb.append("mifb=").append(encodeUrl);
-                sb.append("&from=").append(getActivity().getPackageName());
-                sb.append("&id=").append("T01015354");
+                sb.append("from=").append(getActivity().getPackageName());
+                sb.append("&id=").append("T01022184");
+                sb.append("&mifb=").append(encodeUrl);
                 intent.setData(Uri.parse(sb.toString()));
                 Log.d("DIAOQI", "strintent=" + intent.toUri(Intent.URI_INTENT_SCHEME));
                 getActivity().startActivity(intent);
@@ -256,6 +263,53 @@ public class MainFragment extends BaseFragment {
                 intent.putExtra("enter_news_comment_mode",true);
                 Log.d("DIAOQI", "strintent=" + intent.toUri(Intent.URI_INTENT_SCHEME));
                 getActivity().startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.fenbianlv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String TAG = "FBL";
+                // 获取屏幕宽高（方法1）
+                int screenWidth = getActivity().getWindowManager().getDefaultDisplay().getWidth(); // 屏幕宽（像素，如：480px）
+                int screenHeight = getActivity().getWindowManager().getDefaultDisplay().getHeight(); // 屏幕高（像素，如：800p）
+                Log.e(TAG, "screenWidth=" + screenWidth + "; screenHeight=" + screenHeight);
+// 获取屏幕密度（方法2）
+                DisplayMetrics dm = new DisplayMetrics();
+                dm = getActivity().getResources().getDisplayMetrics();
+                float density = dm.density; // 屏幕密度（像素比例：0.75/1.0/1.5/2.0）
+                int densityDPI = dm.densityDpi; // 屏幕密度（每寸像素：120/160/240/320）
+                float xdpi = dm.xdpi;
+                float ydpi = dm.ydpi;
+                Log.e(TAG, "xdpi=" + xdpi + "; ydpi=" + ydpi);
+                Log.e(TAG, "density=" + density + "; densityDPI=" + densityDPI);
+                screenWidth = dm.widthPixels; // 屏幕宽（像素，如：480px）
+                screenHeight = dm.heightPixels; // 屏幕高（像素，如：800px）
+                Log.e(TAG, "screenWidth=" + screenWidth + "; screenHeight=" + screenHeight);
+// 获取屏幕密度（方法3）
+                dm = new DisplayMetrics();
+                getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+                density = dm.density; // 屏幕密度（像素比例：0.75/1.0/1.5/2.0）
+                densityDPI = dm.densityDpi; // 屏幕密度（每寸像素：120/160/240/320）
+                xdpi = dm.xdpi;
+                ydpi = dm.ydpi;
+                Log.e(TAG, "xdpi=" + xdpi + "; ydpi=" + ydpi);
+                Log.e(TAG, "density=" + density + "; densityDPI=" + densityDPI);
+                int screenWidthDip = dm.widthPixels; // 屏幕宽（dip，如：320dip）
+                int screenHeightDip = dm.heightPixels; // 屏幕宽（dip，如：533dip）
+                Log.e(TAG, "screenWidthDip=" + screenWidthDip + "; screenHeightDip=" + screenHeightDip);
+                screenWidth = (int)(dm.widthPixels * density + 0.5f); // 屏幕宽（px，如：480px）
+                screenHeight = (int)(dm.heightPixels * density + 0.5f); // 屏幕高（px，如：800px）
+                Log.e(TAG, "screenWidth=" + screenWidth + "; screenHeight=" + screenHeight);
+
+                WindowManager windowManager = (WindowManager) getActivity().getApplicationContext().
+                        getSystemService(Context.WINDOW_SERVICE);
+                Display disp = windowManager.getDefaultDisplay();
+                DisplayMetrics displayMetrics = new DisplayMetrics();
+                disp.getRealMetrics(displayMetrics);
+                int realWidth = displayMetrics.widthPixels;
+                int realHeight = displayMetrics.heightPixels;
+                Log.e(TAG, "realWidth=" + realWidth + "; realHeight=" + realHeight);
+
             }
         });
     }
