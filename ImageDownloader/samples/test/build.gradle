@@ -12,6 +12,8 @@ dependencies {
     compile 'tools.android:ImageDownloader:1.0.3'
     compile 'tools.android:ImageLoaderCompactWithGlide:1.0.5'
     compile "com.android.support:recyclerview-v7:${SUPPORT_V7_VERSION}"
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'tools.android:SimpleDownloader:0.0.1.0-snapshot'
 }
 
 android {

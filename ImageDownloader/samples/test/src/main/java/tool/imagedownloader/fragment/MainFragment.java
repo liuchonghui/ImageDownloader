@@ -18,7 +18,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import java.io.File;
-import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.util.List;
 
@@ -127,6 +126,12 @@ public class MainFragment extends BaseFragment {
                 intent.setData(Uri.parse(sb.toString()));
                 Log.d("DIAOQI", "strintent=" + intent.toUri(Intent.URI_INTENT_SCHEME));
                 getActivity().startActivity(intent);
+//                Intent intent = new Intent(Intent.ACTION_VIEW);
+//                ComponentName cn = new ComponentName("com.mfashiongallery.emag",
+//                        "com.mfashiongallery.emag.app.preview.ExpressPreviewActivity");
+//                intent.setComponent(cn);
+//                intent.putExtra("id", "T01022184");
+//                getActivity().startActivity(intent);
             }
         });
         view.findViewById(R.id.chajian3).setOnClickListener(new View.OnClickListener() {

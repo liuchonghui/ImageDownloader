@@ -80,7 +80,7 @@ public class Main2Fragment extends BaseFragment {
     protected void intView(View view) {
         action = (EditText) view.findViewById(R.id.text_action);
         uri = (EditText) view.findViewById(R.id.text_uri);
-        uri.setText("mifg://fashiongallery/player_preview?id=T01022184");
+        uri.setText("mifg://fashiongallery/player_preview?id=I01026648");
         key1 = (EditText) view.findViewById(R.id.text_key1);
         key2 = (EditText) view.findViewById(R.id.text_key2);
         key3 = (EditText) view.findViewById(R.id.text_key3);
